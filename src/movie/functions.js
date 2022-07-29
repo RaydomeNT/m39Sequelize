@@ -11,18 +11,16 @@ exports.createMovie = async (movieObj) => {
 
 exports.readMovie = async (yargsObj) => {
     try {
-        const readMovie = await Movie.findAll({ title: yargsObj.title });
+        const readMovie = await Movie.findAll({ where: { title: yargsObj.title }});
         console.log(readMovie);
     } catch (error) {
         console.log(error);
     }
-}; //use node src/app --read --title""
+}; //use node src/app --read --title ""
 
 exports.updateMovie = async (yargsObj) => {
     try {
-        const updateMovie = await Movie.update({ title: yargsObj.title, actor: yargsObj.actor },
-            {where: { title: yargsObj.title, actor: yargsObj.actor }
-        });
+        const updateMovie = await Movie.update ({ title: yargsObj.title, newTitle: yargsObj.newTitle, actor: yargsObj.actor, newActor: yargsObj.newActor });
         console.log(updateMovie);
     } catch (error) {
         console.log(error);
@@ -31,7 +29,7 @@ exports.updateMovie = async (yargsObj) => {
 
 exports.deleteMovie = async (yargsObj) => {
     try {
-      await Movie.destroy({ yargsObj });
+      await Movie.destroy({ where: { title: yargsObj.title }});
       console.log("deleted")
     } catch (error) {
       console.log(error);
