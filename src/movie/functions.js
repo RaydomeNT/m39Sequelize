@@ -18,16 +18,16 @@ exports.readMovie = async (yargsObj) => {
     }
 }; //use node src/app --read --title ""
 
-exports.updateMovie = async (yargsObj) => {
+exports.updateMovie = async (yargsObj, filterObj) => {
     try {
-        const updateMovie = await Movie.update ({ newActor: yargsObj.newActor}, {
-            where: { title: yargsObj.title }
+        const updateMovie = await Movie.update ({ actor: yargsObj.actor}, {
+            where: { title: filterObj.title }
         });
-        console.log(yargsObj);
+        console.log(yargsObj, filterObj);
     } catch (error) {
         console.log(error);
     }
-}; //use node src/app --update --title "" --actor ""
+}; //use node src/app.js --update --actor "new actor" --title "search by title"
 
 exports.deleteMovie = async (yargsObj) => {
     try {
