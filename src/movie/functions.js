@@ -20,7 +20,9 @@ exports.readMovie = async (yargsObj) => {
 
 exports.updateMovie = async (yargsObj) => {
     try {
-        const updateMovie = await Movie.update ({ title: yargsObj.title, newTitle: yargsObj.newTitle, actor: yargsObj.actor, newActor: yargsObj.newActor });
+        const updateMovie = await Movie.update ({ newTitle: yargsObj.newTitle, newActor: yargsObj.newActor}, {
+            where: { title: yargsObj.title, actor: yargsObj.actor }
+        });
         console.log(updateMovie);
     } catch (error) {
         console.log(error);

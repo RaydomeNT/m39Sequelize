@@ -11,7 +11,7 @@ const app = async (yargsObj) => {
         await readMovie({ title: yargsObj.title, actor: yargsObj.actor });
         //lists movie from db when you search by title
     } else if (yargsObj.update) {
-        await updateMovie({ newTitle: yargsObj.title, title: yargsObj.title, newActor: yargsObj.newActor, actor: yargsObj.actor });
+        await updateMovie({ title: yargsObj.title, actor: yargsObj.actor });
         //update movies from db
     } else if (yargsObj.delete) {
         await deleteMovie({ title: yargsObj.title });
